@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+sub list_to_hash {
+  ## FILL THIS IN
+  my %curr_hash = @_;
+  return my $rh_anon = \%curr_hash;
+}
+
+my $rh = list_to_hash(@ARGV);
+say pp($rh);
+

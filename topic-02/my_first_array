@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Teach::Tutor;
+
+my @arr = ('A', 'B', 'C');
+submit(@arr);

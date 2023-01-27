@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my $names;
+
+if (scalar(@ARGV) > 0 ) {
+    $names = join(', ', @ARGV);
+    $names = "Hello " .$names ."!";
+    say $names;
+}
+else {
+    $names = "Hello, World!";
+    say $names;
+}
+
+submit($names);

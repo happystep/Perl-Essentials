@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+my ($start, $inc, $max) = @ARGV;
+die "$0 called with invalid arguments" unless ($start < $max) && $inc;
+
+
+for (my $i = $start; $i < $max; $i += $inc) {
+    say $i;
+}

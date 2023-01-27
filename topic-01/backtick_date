@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Teach::Tutor;
+
+my $date = `date +%H:%M`;
+my $msg = "It is now $date";
+
+print ($msg);
+submit($msg);   

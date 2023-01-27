@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+my $match = shift;
+# say $match;
+my $filename = shift;
+# say $filename;
+
+open (my $fh, '<', $filename);
+
+while (<$fh>) {
+ if ($_ =~ m/$match/) {
+     say $_;
+ }
+       
+}
+
+close($fh);

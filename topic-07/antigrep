@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my $var = shift;
+
+say $var;
+
+# my @rest = ($ARGV[1] .. $ARGV[$#ARGV]);
+
+# say $rest;
+
+my @matches = grep { !/$var/} @ARGV;
+
+# say @matches;
+
+submit(@matches);

@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my $output;
+my $counter = 1;
+my $max = scalar(@ARGV);
+
+
+if (scalar(@ARGV) == 0){
+    $output = "Hello, World!\n";
+}
+else {
+ foreach my $curr (@ARGV) {
+         $output .= "Hello, " .$curr."!\n";
+ }
+}
+say $output;
+submit($output);

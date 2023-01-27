@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+sub greet_friend {
+    # IMPLEMENT ME!
+    my $rh_friend = {
+    age     => 5,
+    name    => undef,
+    reading => 'Encyclopedia Britannica',
+    @_
+  };
+    
+    my $var = "Hi ".$rh_friend->{name}."! I'm ".($rh_friend->{age} + 1)." and I read ".$rh_friend->{reading}." ages ago. Totally boring."; 
+    
+    if (exists($rh_friend->{hobby}))
+    {
+        $var.=" But I like ".$rh_friend->{hobby}." as a hobby.";
+    }
+    if (exists($rh_friend->{diet}))
+    {
+        $var.= " and ".$rh_friend->{diet}." as a diet.";
+    }
+    
+  return $var
+}
+
+say greet_friend(
+    name    => 'Daniela',
+    age     => 16,
+    reading => 'Shakespeare',
+    hobby   => 'Pac Man',
+    diet    => 'Vegan',
+);
+say greet_friend(
+    name    => 'Dazza',
+    age     => 61,
+    reading => 'Shake Milk',
+    hobby   => 'Panda',
+);

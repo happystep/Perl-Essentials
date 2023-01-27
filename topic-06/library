@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+sub isbn_catalog {
+    # IMPLEMENT ME!
+    my $testee_ref = shift;
+    my @testee = @{ $testee_ref };
+    my %new_hash;
+    foreach my $item (@testee) {
+        # say $item->[0];
+        $new_hash{$item->[1]} = {publication_year => $item->[0], title => $item->[2], authors => [@$item[3 .. 5]]};
+
+    }
+    return \%new_hash;
+}
+
+my $rh_catalog = isbn_catalog([
+    ['1998', '978-0-8001-0215-9', 'Glory', 'Freddie Fields', 'P.K. Fields', 'Pieter Jan Brugge'],
+    ['1998', '978-0-8001-2901-9','The Whole Town\'s Talking', 'Joseph H. August','John Ford']
+])
+;
+
+say pp($rh_catalog);
+

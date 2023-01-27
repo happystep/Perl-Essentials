@@ -1,0 +1,74 @@
+#!/usr/bin/perl -Ilib -Iextlib/lib/perl5
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+use Getopt::Long;
+use Text::CSV;
+use Airport::Data;
+use Airport::Search;
+use Geo::Coder::Google;
+
+my $filename = '/home/student/perl-basic/topic-07/iata_airports.csv';
+my $number = 3;
+my $matching;
+my $latitude;
+my $longitude;
+my $word;
+my $address;
+my $distance = 2;
+my $max = 2;
+
+GetOptions ("filename=s" => \$filename, # string
+            "number=i" => \$number, # intetger
+            "matching=s" => \$matching,    # string
+            "latitude=f"   => \$latitude,      # float
+            "longitude=f"  => \$longitude,   # float
+            "word=s" => \$word,
+            "address=s" => \$address,
+            "distance=f" => \$distance)
+or die("Error in command line arguments\n");
+
+my $rah_airports =  Airport::Data::parse_airports($filename);
+my $rah_airports_found = [];
+
+
+if ($matching) {
+  say "Up to $number airports matching $matching in $filename:"; 
+  $rah_airports_found = Airport::Search::get_name_matching_airports(
+    airports        => $rah_airports,
+    matching_string => $matching,
+    word            => $word,
+  );
+}
+elsif ($latitude && $longitude) {
+  say "Up to $number airports near [$latitude, $longitude] in $filename:";
+   $rah_airports_found = Airport::Search::get_latlong_matching_airports(
+    airports        => $rah_airports,
+    lat             => $latitude,
+    long            => $longitude,
+  );
+}
+elsif ($address && $distance) {
+    say "Up to $number airports near $address in $filename:";
+    my $geocoder = Geo::Coder::Google->new(apiver => 3, key => 'AIzaSyAm4EInCcSvNxO-Na-YMkAr8nYgaXja418');
+    my $location = $geocoder->geocode( location => $address);
+    my $geometry =  $location->{geometry};
+    my $curr_location = $geometry->{location};
+    my $cur_lat = $curr_location->{lat};
+    my $cur_lng = $curr_location->{lng};
+    $rah_airports_found = Airport::Search::get_latlong_matching_airports(
+    airports        => $rah_airports,
+    lat             => $cur_lat,
+    long            => $cur_lng,
+    max             => $max,
+  );
+}    
+else {
+  say "Must have at least --matching, or --latitude and --longitude as arguments";
+}
+
+print pp($rah_airports_found);
+
+

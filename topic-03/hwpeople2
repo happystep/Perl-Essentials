@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my $output;
+
+if (scalar(@ARGV) == 0 ) {
+    $output = "I'm lonely!";
+    say $output;
+} 
+elsif (scalar(@ARGV) == 1) {
+    $output = "Would you like some tea?";
+    say $output
+} 
+elsif (scalar(@ARGV) == 2) {
+    $output = "Hello you two!";
+    say $output;
+}
+elsif (scalar(@ARGV) > 2 && scalar(@ARGV) < 6) {
+    $output = "Come on in!";
+    say $output;
+}
+else {
+    $output = "Sorry, you must have the wrong address.";
+    say $output;
+}
+
+submit($output);

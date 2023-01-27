@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor;
+
+my %person = (
+    Action => 'Says',
+    Height => '190cm',
+    Name =>  'Simon',
+    Subject =>'Wash your hands!',
+    Weight => '75kg'
+);
+
+submit (%person);
+say $person{$ARGV[0]};

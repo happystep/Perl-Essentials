@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my @arr = qw!Steve's mother's quotation: "What?"!;
+
+submit(@arr);
+say pp(@arr);

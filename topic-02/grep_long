@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+ 
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature qw/say/;
+use Teach::Tutor;
+
+my @longuns = grep { length($_) > 4 } @ARGV;
+ 
+submit(@longuns);
+say pp @longuns;

@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my @int_arr = ($ARGV[0]..$ARGV[1]);
+
+submit(@int_arr);
+say pp(@int_arr);

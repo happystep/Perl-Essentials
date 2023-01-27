@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+use feature 'switch';
+no warnings 'experimental::smartmatch';
+
+my $output; 
+
+given (scalar(@ARGV)) {
+    when ($_ == 0) {
+        $output = "I'm lonely!";
+    }
+    when ($_ == 1) {
+        $output = "Would you like some tea?";
+    }
+    when ($_ == 2) {
+        $output = "Hello you two!";
+    }
+    when (($_ > 2) && ($_ < 6)) {
+        $output = "Come on in!";
+    }
+    default {
+        $output = "Sorry, you must have the wrong address.";
+    }
+}
+
+say $output;
+submit($output);

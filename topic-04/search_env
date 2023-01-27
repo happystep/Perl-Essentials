@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+foreach my $curr (@ARGV) {
+    if (exists($ENV{$curr})){
+        say $curr.':'.$ENV{$curr}
+    }
+}

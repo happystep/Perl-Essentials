@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump qw/pp/;
+use feature qw/say/;
+
+my %person = ( 
+    'Action' => "Says",
+    'Height' => undef,
+    'Name' => "Simon",
+    'Subject' =>"",
+    'Object' => 0,
+    'Weight' => "75kg",
+);
+
+unless ($ARGV[0]) {
+    say "$0 must be called with a single command-line argument";
+    exit;
+}
+
+if (exists($person{$ARGV[0]})) {
+    if ($person{$ARGV[0]}) {
+        say $person{$ARGV[0]};
+    }
+    elsif (!defined($person{$ARGV[0]})) {
+        say "undef";
+    }
+    else {
+        say "false";
+    }
+}
+else {
+    say "nonexistent";
+}
+

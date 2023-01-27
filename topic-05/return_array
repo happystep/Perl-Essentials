@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+sub string_lengths {
+    my @params = @_;
+    # TODO - implement me...
+    # and make sure @ARGV is not used inside this subroutine!
+    my @list;
+    foreach my $curr (@params) {
+        push (@list,length($curr));
+    }
+    return @list;
+}
+
+my @lengths = string_lengths(@ARGV);
+say 'String lengths: '.pp(@lengths);
+

@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+use Data::Dump 'pp';
+use Teach::Tutor; # Don't forget to call: submit(<variable>);
+
+my %person;
+
+$person{Weight} = '75kg';
+$person{Height} = '190cm';
+$person{Name} = 'Simon';
+$person{Action} = 'Says';
+$person{Subject} = 'Wash your hands!';
+
+submit(%person);

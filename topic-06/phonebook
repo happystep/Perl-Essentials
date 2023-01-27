@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+
+sub search_firstname {
+    ## FILL THIS IN
+    my ($name_1, $array_1) = @_;
+    my @array_2;
+    
+    foreach my $curr (@$array_1) {
+        if ($curr->{firstname} eq $name_1) {
+            push(@array_2, $curr);
+        }
+    }
+    return \@array_2;
+}
+
+my $rah_results = search_firstname ($ARGV[0] || '', [
+    { firstname => 'Bill', surname => 'Smith',    phone => 123123213 },
+    { firstname => 'Anne', surname => 'Taylor',   phone => 123123213 },
+    { firstname => 'Bill', surname => 'Sinclair', phone => 9999 }
+]);
+
+
+say pp($rah_results);
+

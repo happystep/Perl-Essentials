@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+my $matching_string = $ARGV[0];
+my $output;
+foreach my $my_var (@ARGV[1..10])
+{
+    if ($my_var =~ m/$matching_string/) {
+        $output .= uc($my_var)." ";
+        # say uc($my_var);
+    }
+    else {
+        $output .= $my_var." ";
+        # say $my_var;
+    }
+}
+
+say $output;

@@ -1,0 +1,42 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+
+
+sub translate {
+    ## FILL THIS IN
+    my ($hash_1, $array_1) = @_;
+    my @array_2;
+    
+    my %local_hash = %$hash_1;
+    my @local_array = @$array_1;
+    
+    my @new_array;
+    
+    foreach my $curr (@local_array) {
+        if (exists($local_hash{$curr})) {
+            push(@new_array, $local_hash{$curr});
+        }
+        else
+        {
+            push(@new_array, $curr);
+        }
+    }
+    
+    return \@new_array;
+    # say $local_hash{ich};
+    
+    
+}
+
+my $ra_en_de_xlat = translate({
+    ich => 'I',
+    bin => 'am',
+    ein => 'a',
+}, [@ARGV]);
+
+say join(' ',@$ra_en_de_xlat);
+

@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature 'say';
+use Getopt::Long;
+
+my $filename = '/home/student/perl-basic/topic-07/iata_airports.csv';
+my $number = 1;
+my $matching;
+my $latitude;
+my $longitude;
+
+GetOptions ("filename=s" => \$filename, # string
+            "number=i" => \$number, # intetger
+            "matching=s" => \$matching,    # string
+            "latitude=f"   => \$latitude,      # float
+            "longitude=f"  => \$longitude)   # float
+or die("Error in command line arguments\n");
+
+# say $filename;
+# say $number;
+# say $matching;
+# say $latitude;
+# say $longitude;
+
+if ($matching) {
+  say "Up to $number airports matching $matching in $filename:";
+}
+elsif ($latitude && $longitude) {
+  say "Up to $number airports near [$latitude, $longitude] in $filename:"
+}
+else {
+  say "Must have at least --matching, or --latitude and --longitude as arguments";
+}
+

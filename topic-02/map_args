@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dump 'pp';
+use feature qw/say/;
+use Teach::Tutor;
+
+my @lengths = map { length($_)} @ARGV;
+
+submit(@lengths);
+say pp @lengths;

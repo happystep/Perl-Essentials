@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+use feature 'say';
+use Teach::Tutor;
+
+my $num = $ARGV[0];
+my $str;
+
+unless ($num % 2) {
+        $str = "even";
+}
+else {
+        $str = "odd";
+}
+
+say $str;
+submit($str);
+

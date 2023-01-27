@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use feature 'say';
+
+my $r_sub1 = sub { return "Foo"; };
+my $r_sub2 = sub { return 'BAR'; };
+
+sub is_all_caps {
+    my $r_sub = shift;
+
+    my $retval = $r_sub->();
+    if (uc($retval) eq $retval) {
+      return 'returns an all upper case string';
+    }
+    else {
+      return 'returns a string with lower case';
+    }
+}
+
+say 'r_sub1 '.is_all_caps($r_sub1);
+say 'r_sub2 '.is_all_caps($r_sub2);
+
+

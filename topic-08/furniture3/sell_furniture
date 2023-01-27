@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use lib '.';
+use feature 'say';
+use Data::Dump 'pp';
+use FurnitureShop;
+use FurnitureShop::Chair;
+use FurnitureShop::Table;
+use FurnitureShop 'hello';
+
+say hello('fred');
+say FurnitureShop::Chair->sell('fred');
+say FurnitureShop::Table->sell('fred');
+
